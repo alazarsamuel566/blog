@@ -39,38 +39,4 @@ python -m http.server 8000
 
 Then open <http://localhost:8000> in your browser.
 
-## How to add a new post
 
-Open `js/main.js` and add an item to the `posts` array:
-
-```js
-{
-  title: "My new post",
-  tag: "Web",
-  date: "October 22, 2026",
-  image: "assets/post1.svg",
-  text: "A short summary of the post."
-}
-```
-
-Save the file and refresh the page. Your post shows up straight away.
-
-## How to add a gallery picture
-
-Add an SVG file to the `assets` folder, then add it to the `gallery` array in
-`js/main.js`:
-
-```js
-{ file: "assets/gal10.svg", name: "New picture", category: "nature" }
-```
-
-The categories used by the filter buttons are `nature`, `city` and `people`.
-
-## Git
-
-```bash
-git status
-git add .
-git commit -m "Describe your change"
-git push origin main
-```
