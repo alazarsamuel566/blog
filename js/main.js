@@ -85,3 +85,97 @@ function showPosts() {
 }
 
 showPosts();
+
+// ========== Gallery images data ==========
+var gallery = [
+  { file: "assets/gal1.svg", name: "Mountain Lake", category: "nature" },
+  { file: "assets/gal2.svg", name: "City Lights", category: "city" },
+  { file: "assets/gal3.svg", name: "Old Friends", category: "people" },
+  { file: "assets/gal4.svg", name: "Green Forest", category: "nature" },
+  { file: "assets/gal5.svg", name: "Old Street", category: "city" },
+  { file: "assets/gal6.svg", name: "Coffee Break", category: "people" },
+  { file: "assets/gal7.svg", name: "Desert Road", category: "nature" },
+  { file: "assets/gal8.svg", name: "Night Bridge", category: "city" },
+  { file: "assets/gal9.svg", name: "Quiet Morning", category: "people" }
+];
+
+// ========== Show the gallery ==========
+var galleryGrid = document.getElementById("galleryGrid");
+
+function showGallery() {
+  var html = "";
+
+  for (var i = 0; i < gallery.length; i++) {
+    html +=
+      '<div class="gallery-item" data-category="' + gallery[i].category + '">' +
+      '<img src="' + gallery[i].file + '" alt="' + gallery[i].name + '">' +
+      '<div class="gallery-caption">' + gallery[i].name + "</div>" +
+      "</div>";
+  }
+
+  galleryGrid.innerHTML = html;
+}
+
+showGallery();
+
+// ========== Filter buttons ==========
+var filterButtons = document.getElementById("filterButtons");
+var filterButtonsList = filterButtons.querySelectorAll(".filter-btn");
+var galleryItems = galleryGrid.querySelectorAll(".gallery-item");
+
+filterButtonsList.forEach(function (button) {
+  button.addEventListener("click", function () {
+    // remove the active class from every button
+    filterButtonsList.forEach(function (b) {
+      b.classList.remove("active");
+    });
+    button.classList.add("active");
+
+    var wanted = button.getAttribute("data-filter");
+
+    // hide the pictures that do not match
+    galleryItems.forEach(function (item) {
+      if (wanted === "all" || item.getAttribute("data-category") === wanted) {
+        item.classList.remove("hide");
+      } else {
+        item.classList.add("hide");
+      }
+    });
+  });
+});
+
+// ========== Lightbox ==========
+var lightbox = document.getElementById("lightbox");
+var lightboxImg = document.getElementById("lightboxImg");
+var lightboxCaption = document.getElementById("lightboxCaption");
+var lightboxClose = document.getElementById("lightboxClose");
+
+galleryItems.forEach(function (item) {
+  item.addEventListener("click", function () {
+    var image = item.querySelector("img");
+    var name = item.querySelector(".gallery-caption");
+
+    lightboxImg.src = image.src;
+    lightboxCaption.textContent = name.textContent;
+    lightbox.classList.add("open");
+  });
+});
+
+// close the lightbox
+lightboxClose.addEventListener("click", function () {
+  lightbox.classList.remove("open");
+});
+
+// click outside the picture to close it
+lightbox.addEventListener("click", function (event) {
+  if (event.target === lightbox) {
+    lightbox.classList.remove("open");
+  }
+});
+
+// press escape key to close it
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
+    lightbox.classList.remove("open");
+  }
+});
