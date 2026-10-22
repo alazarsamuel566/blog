@@ -10,6 +10,12 @@ body {
   line-height: 1.6;
   color: #333;
   background: #f7f7f7;
+  scroll-behavior: smooth;
+}
+
+/* keep the section title away from the sticky header */
+section {
+  scroll-margin-top: 80px;
 }
 
 .container {
@@ -87,6 +93,23 @@ body {
   border: none;
   cursor: pointer;
   color: #333;
+}
+
+/* Theme button */
+.theme-btn {
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #444;
+  transition: 0.2s;
+}
+
+.theme-btn:hover {
+  background: #eef3fd;
+  border-color: #2d6cdf;
 }
 
 /* ===== Hero ===== */
@@ -471,6 +494,111 @@ textarea {
 .socials a:hover {
   background: #2d6cdf;
   color: #fff;
+}
+
+/* ===== Back to top button ===== */
+.top-btn {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: #2d6cdf;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+  z-index: 150;
+}
+
+.top-btn.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.top-btn:hover {
+  background: #1f55b5;
+}
+
+/* ===== Dark theme ===== */
+body.dark {
+  background: #16181d;
+  color: #dcdfe6;
+}
+
+body.dark .header,
+body.dark .post-card,
+body.dark .about-box,
+body.dark .contact-box,
+body.dark .filter-btn {
+  background: #1f232b;
+  color: #dcdfe6;
+}
+
+body.dark .nav-links {
+  background: #1f232b;
+}
+
+body.dark .nav-links a {
+  color: #dcdfe6;
+}
+
+body.dark .logo,
+body.dark .section-title,
+body.dark .post-card h3,
+body.dark .post-link,
+body.dark label,
+body.dark .contact-info h3 {
+  color: #f0f2f6;
+}
+
+body.dark .section-sub,
+body.dark .post-card p,
+body.dark .about-text p,
+body.dark .contact-info p {
+  color: #a7adba;
+}
+
+body.dark .post-date {
+  color: #7b8290;
+}
+
+body.dark .skill,
+body.dark .post-tag,
+body.dark .socials a {
+  background: #2a3140;
+  color: #7fb0ff;
+}
+
+body.dark .filter-btn {
+  border-color: #333a47;
+}
+
+body.dark .filter-btn.active {
+  background: #2d6cdf;
+  border-color: #2d6cdf;
+  color: #fff;
+}
+
+body.dark input,
+body.dark textarea {
+  background: #191c22;
+  border-color: #333a47;
+  color: #dcdfe6;
+}
+
+body.dark .contact-info,
+body.dark .about-box {
+  border-color: #2a3140;
+}
+
+body.dark .footer {
+  background: #0f1115;
 }
 
 /* ===== Mobile ===== */

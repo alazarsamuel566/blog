@@ -241,3 +241,60 @@ contactForm.addEventListener("submit", function (event) {
     formMsg.textContent = "";
   }
 });
+
+// ========== Highlight the section you are reading ==========
+var sectionNames = ["home", "about", "gallery", "contact"];
+var navAnchors = navLinks.querySelectorAll('a[href^="#"]');
+
+function checkSection() {
+  var current = "home";
+
+  for (var i = 0; i < sectionNames.length; i++) {
+    var section = document.getElementById(sectionNames[i]);
+
+    if (section) {
+      if (section.getBoundingClientRect().top <= 120) {
+        current = sectionNames[i];
+      }
+    }
+  }
+
+  navAnchors.forEach(function (link) {
+    if (link.getAttribute("href") === "#" + current) {
+      link.classList.add("active");
+    } else {
+      link.classList.remove("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", checkSection);
+checkSection();
+
+// ========== Back to top button ==========
+var topBtn = document.getElementById("topBtn");
+
+window.addEventListener("scroll", function () {
+  if (window.pageYOffset > 300) {
+    topBtn.classList.add("show");
+  } else {
+    topBtn.classList.remove("show");
+  }
+});
+
+topBtn.addEventListener("click", function () {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+// ========== Dark / light theme ==========
+var themeBtn = document.getElementById("themeBtn");
+
+themeBtn.addEventListener("click", function () {
+  document.body.classList.toggle("dark");
+
+  if (document.body.classList.contains("dark")) {
+    themeBtn.innerHTML = "&#9788;"; // sun
+  } else {
+    themeBtn.innerHTML = "&#9789;"; // moon
+  }
+});
