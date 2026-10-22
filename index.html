@@ -111,6 +111,50 @@
     <div class="container">
       <h2 class="section-title">Contact</h2>
       <p class="section-sub">Say hello, I will reply soon.</p>
+
+      <div class="contact-box">
+        <form id="contactForm" novalidate>
+          <div class="form-row">
+            <label for="name">Your name</label>
+            <input type="text" id="name" name="name" placeholder="John Doe">
+            <small class="error" id="nameError"></small>
+          </div>
+
+          <div class="form-row">
+            <label for="email">Your email</label>
+            <input type="email" id="email" name="email" placeholder="john@example.com">
+            <small class="error" id="emailError"></small>
+          </div>
+
+          <div class="form-row">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="Hello there">
+            <small class="error" id="subjectError"></small>
+          </div>
+
+          <div class="form-row">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Write your message"></textarea>
+            <small class="error" id="messageError"></small>
+          </div>
+
+          <button type="submit" class="btn btn-dark">Send message</button>
+          <p class="form-msg" id="formMsg"></p>
+        </form>
+
+        <div class="contact-info">
+          <h3>Other ways to reach me</h3>
+          <p><strong>Email:</strong> hello@myblog.com</p>
+          <p><strong>Phone:</strong> +234 800 000 0000</p>
+          <p><strong>Location:</strong> Lagos, Nigeria</p>
+
+          <div class="socials">
+            <a href="#home">Twitter</a>
+            <a href="#home">GitHub</a>
+            <a href="#home">LinkedIn</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 

@@ -179,3 +179,65 @@ document.addEventListener("keydown", function (event) {
     lightbox.classList.remove("open");
   }
 });
+
+// ========== Contact form check ==========
+var contactForm = document.getElementById("contactForm");
+var formMsg = document.getElementById("formMsg");
+
+contactForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  var name = document.getElementById("name");
+  var email = document.getElementById("email");
+  var subject = document.getElementById("subject");
+  var message = document.getElementById("message");
+
+  var nameError = document.getElementById("nameError");
+  var emailError = document.getElementById("emailError");
+  var subjectError = document.getElementById("subjectError");
+  var messageError = document.getElementById("messageError");
+
+  var isOk = true;
+
+  // check the name
+  if (name.value.trim() === "") {
+    nameError.textContent = "Please enter your name.";
+    isOk = false;
+  } else {
+    nameError.textContent = "";
+  }
+
+  // check the email
+  if (email.value.trim() === "") {
+    emailError.textContent = "Please enter your email.";
+    isOk = false;
+  } else if (email.value.indexOf("@") === -1) {
+    emailError.textContent = "Please enter a valid email.";
+    isOk = false;
+  } else {
+    emailError.textContent = "";
+  }
+
+  // check the subject
+  if (subject.value.trim() === "") {
+    subjectError.textContent = "Please enter a subject.";
+    isOk = false;
+  } else {
+    subjectError.textContent = "";
+  }
+
+  // check the message
+  if (message.value.trim() === "") {
+    messageError.textContent = "Please write a message.";
+    isOk = false;
+  } else {
+    messageError.textContent = "";
+  }
+
+  if (isOk) {
+    formMsg.textContent = "Thanks " + name.value.trim() + "! Your message has been sent.";
+    contactForm.reset();
+  } else {
+    formMsg.textContent = "";
+  }
+});
